@@ -31,7 +31,7 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="card">
                                         <div class="card-header bg-danger text-white">TOTAL CASES</div>
-                                        <div class="card-body text-center" id="totalCases"><div class='spinner-border text-danger'></div></div>
+                                        <div class="card-body text-center" id="totalCases"><div class='spinner-border text-danger'>Loading...</div></div>
 
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <div class="card">
                                 <div class="card-header bg-danger text-white">NEW CASES</div>
-                                <div class="card-body text-center" id="newConfirmed"><div class='spinner-border text-danger'></div></div>
+                                <div class="card-body text-center" id="newConfirmed"><div class='spinner-border text-danger'>Loading...</div></div>
 
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <div class="card">
                                 <div class="card-header bg-danger text-white">NEW RECOVEREDS</div>
-                                <div class="card-body text-center" id="NewRecovered"><div class='spinner-border text-danger'></div></div>
+                                <div class="card-body text-center" id="NewRecovered"><div class='spinner-border text-danger'>Loding...</div></div>
 
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <div class="card">
                                 <div class="card-header bg-danger text-white">TOTAL DEATHS</div>
-                                <div class="card-body text-center" id="TotalDeaths"><div class='spinner-border text-danger'></div></div>
+                                <div class="card-body text-center" id="TotalDeaths"><div class='spinner-border text-danger'>Loading...</div></div>
 
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <div class="card">
                                 <div class="card-header bg-danger text-white">NEW DEATHS</div>
-                                <div class="card-body text-center" id="NewDeaths"><div class='spinner-border text-danger'></div></div>
+                                <div class="card-body text-center" id="NewDeaths"><div class='spinner-border text-danger'>Loading...</div></div>
 
                             </div>
                         </div>
@@ -91,18 +91,17 @@
 
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <div class="card">
-                                <div class="card-header bg-danger text-white">TOTAL DEATHS</div>
-                                <div class="card-body text-center" id="TotalDeaths"><div class='spinner-border text-danger'></div></div>
 
-                            </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="card">
                                         <div class="card-header bg-danger text-white">TOTAL RECOVERED</div>
-                                        <div class="card-body text-center" id="TotalRecovered"><div class='spinner-border text-danger'></div></div>
+                                        <div class="card-body text-center" id="TotalRecovered">
+                                            <div class="spinner-border text-primary" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div></div>
 
                                     </div>
                                 </div>
@@ -140,7 +139,7 @@
                     dataType: 'json',
                     url: _urlAPICOVID19 + 'summary',
                     beforSend: function () {
-
+                        $("#totalCases, #newConfirmed, #NewRecovered, #TotalDeaths, #NewDeaths, #TotalRecovered").html("<div class='spinner-border text-danger'></div>")
                     }
                 }).done(function (data) {
                     var objGlobal = data.Global;
@@ -168,7 +167,7 @@
                         dataType: 'json',
                         url: _urlAPICOVID19 + 'total/country/' + value,
                         beforSend: function () {
-                            $("#totalCases, #newConfirmed, #NewRecovered, #TotalDeaths, #NewDeaths, #TotalRecovered").html("<div class='spinner-border text-danger'></div>")
+                            //$("#totalCases, #newConfirmed, #NewRecovered, #TotalDeaths, #NewDeaths, #TotalRecovered").html("<div class='spinner-border text-danger'></div>")
                         }
                     }).done(function (data) {
                         console.log(data);
